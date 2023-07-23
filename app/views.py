@@ -54,8 +54,6 @@ def auction_items(request):
                 'id': item.id,
                 'product title': item.product_title,
                 'product derscription': item.description,
-                'start time': item.start_time,
-                'end time': item.end_time,
                 'start price': item.startingbid,
                 'end price': item.price,
                 'winner': item.winner,
