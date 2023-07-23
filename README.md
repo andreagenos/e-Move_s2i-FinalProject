@@ -32,7 +32,7 @@ Create a Virtual Environment
 
 Clone the repo and install requirements in Platform/requirements.txt
 
-Make database migrations
+Make database migrations: python manage.py makemigrations - python manage.py migrate
 
 Install and run Redis DB Server
 
