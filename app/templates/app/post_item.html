@@ -1,0 +1,33 @@
+{% extends 'app/base.html' %}
+{% block content %}
+{% load static %}
+
+    <header>
+        <div id="header">
+            <title>e-Move</title>
+            <h1 class="title">e_Move</h1>
+            <center>
+            <h2 class="'subtitle">Post your Item</h2>
+            </center>
+        </div>
+    </header>
+
+    <center>
+    {% if user.is_staff %}
+    <p class="menu">Welcome {{ user.username }}</p>
+    <div class="form-container">
+     <form method="POST" class="my-form" enctype="multipart/form-data">
+        {% csrf_token %}
+         {{ form.as_p }}
+         <button type="submit" class="btn btn-primary">Save</button>
+     </form>
+    </div>
+    </center>
+    {% else %}
+    <div id="login_info">
+        <p>You are not an Admin User. Please go to <a href="{% url 'auction_items' %}">Auction items page</a></p>
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    </div>
+    {% endif %}
+    {% endblock %}
+</html>

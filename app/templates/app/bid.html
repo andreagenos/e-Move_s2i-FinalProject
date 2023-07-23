@@ -1,0 +1,27 @@
+{% extends 'app/base.html' %}
+{% block content %}
+{% load static %}
+
+    <header>
+        <div id="header">
+            <title>e-Move</title>
+            <h1 class="title">e-Move</h1>
+            <center>
+            <h2 class="'subtitle">Place a bid</h2>
+            </center>
+        </div>
+    </header>
+
+    <center>
+    <div class="form-container">
+    <form method="post" action="{% url 'bid' %}" class="my-form" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        {{ form.as_p }}
+      
+        <button type="submit">Place Bid</button>
+      </form>
+    </div>
+    </center>
+{% endblock %}
+</html>

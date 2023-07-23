@@ -1,0 +1,32 @@
+{% extends 'app/base.html' %}
+{% block content %}
+{% load static %}
+
+    <header>
+        <div id="header">
+            <title>e-Move</title>
+            <h1 class="title">e-Move</h1>
+            <center>
+            <h2 class="subtitle">Welcome to e-Move </h2>
+            <h2 class="subtitle">On this platform you can find all active auctions of our products, place your bid to win the item! 
+                The income will be donated to charity. </h2>
+
+            </center>
+        </div>
+    </header>
+    <body>
+        <div id="login_info">
+            {% if user.is_staff %}
+                <p class="menu">Welcome {{ user.username }} - <a href="{% url 'auction_items' %}">Auction items</a> - <a href="{% url 'post_item' %}">Post item</a> - <a href="{% url 'bid' %}">Bid</a> - <a href="{% url 'logout' %}">Log Out</a></p>
+                <link rel="stylesheet" href="{% static 'css/base.css' %}">
+
+            {% elif user.is_authenticated %}
+                <p class="menu">Welcome {{ user.username }} - <a href="{% url 'auction_items' %}">Auction items</a> - <a href="{% url 'bid' %}">Bid</a> - <a href="{% url 'logout' %}">Log Out</a></p>
+                <link rel="stylesheet" href="{% static 'css/base.css' %}">
+            
+            {% else %}
+                <div id="login_info">
+                <p>You are not logged in. Please <a href="{% url 'login' %}">Log In</a></p>
+            {% endif %}
+{% endblock %}
+</html>

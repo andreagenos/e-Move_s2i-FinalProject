@@ -1,0 +1,34 @@
+{% extends 'app/base.html' %}
+{% block content %}
+{% load static %}
+
+<header>
+    <div id="header">
+        <title>e-Move</title>
+        <h1 class="title">e-Move</h1>
+        <center>
+        <h2 class="'subtitle">Auction Items</h2>
+        </center>
+    </div>
+</header>
+<body>
+    <ul>
+    <div class="grid-container">
+        {% for item in items %}
+        <div class="card">
+            <img src="{{ item.image.url}}">
+            <div class="card-body">
+            <h5 class="card-title">{{ item.product_title }}</h5>
+            <p class="card-description">ID. {{ item.id }}</p>
+            <p class="card-description">{{ item.description }}</p>
+            <p class="card-price">Starting price - {{ item.startingbid }} $</p>
+            <p class="card-price">Current price - {{ item.price }} $</p>
+            <a href="{% url 'bid' %}">Bid</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    </ul>
+</body>
+{% endblock %}
+</html>
